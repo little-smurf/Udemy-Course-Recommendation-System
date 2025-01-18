@@ -9,7 +9,7 @@ import os
 
 # Function to load cleaned data
 def load_cleaned_data():
-    file_path = 'C:/Users/Oumayma/Desktop/Studies/3EB/udemy/cleaned_data.pkl'
+    file_path = 'cleaned_data.pkl'
     if os.path.exists(file_path):
         return joblib.load(file_path)
     else:
@@ -91,7 +91,7 @@ def main():
         print("Preprocessing data...")
         cleaned_data = preprocess_data("Udemy Courses.xlsx")
         print("Saving cleaned data...")
-        joblib.dump(cleaned_data, "C:/Users/Oumayma/Desktop/Studies/3EB/udemy/cleaned_data.pkl")
+        joblib.dump(cleaned_data, "cleaned_data.pkl")
 
     course_embeddings = load_precomputed_embeddings()
     model = load_model()
@@ -109,7 +109,7 @@ def main():
 
     if st.button("Reset"):
         st.session_state["reset_count"] += 1  # Increment the reset counter
-        st.experimental_rerun()
+        st.rerun()
     # Get Recommendations Button
     if st.button("Get Recommendations"):
         if user_input:
